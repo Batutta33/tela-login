@@ -1,0 +1,158 @@
+/* Estilos adicionais para a tela de login. TailwindCSS cobre a maior parte da estilização. */
+
+/* Sombra moderna, vidro fosco e animação de entrada */
+form {
+  /* Centraliza o formulário na tela (o container externo já faz parte disso) */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 48px 0 rgba(30, 64, 175, 0.13), 0 1.5px 8px 0 rgba(0,0,0,0.04);
+  border: 1.5px solid #e0e7ef;
+  background: linear-gradient(120deg, rgba(255,255,255,0.97) 70%, rgba(59,130,246,0.06) 100%);
+  backdrop-filter: blur(6px) saturate(1.1);
+  transition: box-shadow 0.3s, border 0.3s, transform 0.3s;
+  animation: loginFadeIn 0.8s cubic-bezier(.77,0,.18,1) 0.1s both;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  padding: 2.5rem 1.5rem 2rem 1.5rem;
+  min-width: 280px;
+  max-width: 370px;
+  margin-top: 160px;
+}
+
+form::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(circle at 80% 10%, #a21caf22 0%, transparent 70%),
+              radial-gradient(circle at 10% 90%, #2563eb11 0%, transparent 70%);
+  pointer-events: none;
+}
+
+form:hover {
+  box-shadow: 0 20px 60px 0 rgba(30, 64, 175, 0.18), 0 2px 12px 0 rgba(0,0,0,0.07);
+  border: 1.5px solid #6366f1;
+  transform: translateY(-2px) scale(1.012);
+}
+
+@keyframes loginFadeIn {
+  0% { opacity: 0; transform: translateY(40px) scale(0.98); }
+  100% { opacity: 1; transform: none; }
+}
+
+/* Inputs com efeito glass, ícone e animação de foco */
+input[type="text"],
+input[type="password"] {
+  background: rgba(243,244,246,0.85);
+  border: 1.5px solid #dbeafe;
+  border-radius: 0.75rem;
+  padding-left: 2.5rem;
+  transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+  font-size: 1.08rem;
+  box-shadow: 0 1px 4px 0 rgba(59,130,246,0.04);
+  position: relative;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border: 1.5px solid #a21caf;
+  box-shadow: 0 0 0 3px #a21caf33;
+  background: #fff;
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  color: #a1a1aa;
+  opacity: 1;
+  font-size: 1rem;
+}
+
+/* Botão com gradiente neon, brilho e efeito de clique */
+button[type="submit"] {
+  background: linear-gradient(90deg, #6366f1 0%, #a21caf 100%);
+  box-shadow: 0 4px 24px 0 #a21caf33, 0 1.5px 8px 0 #6366f122;
+  font-size: 1.13rem;
+  letter-spacing: 1.5px;
+  color: #fff;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  text-shadow: 0 1px 8px #a21caf33;
+  transition: background 0.2s, transform 0.13s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+  margin-top: 30px;
+  padding-left: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+button[type="submit"]::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, #fff6 0%, transparent 80%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: width 0.3s, height 0.3s, opacity 0.3s;
+  z-index: 1;
+}
+
+button[type="submit"]:active::after {
+  width: 120%;
+  height: 300%;
+  opacity: 0.18;
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(90deg, #a21caf 0%, #6366f1 100%);
+  transform: translateY(-2px) scale(1.045);
+  box-shadow: 0 8px 32px 0 #a21caf44, 0 2px 12px 0 #6366f144;
+}
+
+/* Título com gradiente animado e glow */
+h2 {
+  background: linear-gradient(270deg, #6366f1, #a21caf, #6366f1);
+  background-size: 200% 200%;
+  animation: gradientMove 3.5s ease-in-out infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 12px #a21caf33);
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Responsividade extra e animação mobile */
+@media (max-width: 500px) {
+  form {
+    padding: 1.2rem 0.3rem;
+    border-radius: 1rem;
+    min-width: unset;
+    animation: loginFadeInMobile 0.7s cubic-bezier(.77,0,.18,1) 0.1s both;
+  }
+  h2 {
+    font-size: 1.1rem;
+  }
+}
+
+@keyframes loginFadeInMobile {
+  0% { opacity: 0; transform: translateY(60px) scale(0.96); }
+  100% { opacity: 1; transform: none; }
+}

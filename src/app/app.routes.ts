@@ -1,3 +1,11 @@
-import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+// Rotas da aplicação, incluindo a tela de login standalone
+import { Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+
+export const routes: Routes = [
+  {
+    path: '',
+    component: LoginComponent
+  }
+];
